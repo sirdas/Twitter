@@ -24,6 +24,18 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance
     }
     
+    func homeTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        self.GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            //                print("home timeline: \(response!)")
+            let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+//            for tweet in tweets {
+//                print("text: \(tweet.text), created: \(tweet.createdAt)")
+            completion(tweets: tweets, error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Error getting home timeline")
+    completion(tweets:nil, error: error)
+        })
+    }
     
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
@@ -47,25 +59,14 @@ class TwitterClient: BDBOAuth1SessionManager {
                 
                 if let responseDictionary: NSDictionary = response as? NSDictionary {
                     let user = User(dictionary: responseDictionary as NSDictionary)
-                    print(user.name)
-                    self.loginCompletion!(user: user, error: nil)
+//                    print(user.name)
+                    User.currentUser = user
+                    self.loginCompletion?(user: user, error: nil)
                 }
-                
-                
-                
                 }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
                     print("Error getting current user")
                     self.loginCompletion?(user: nil, error: error)
             })
-            
-            self.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-                print("home timeline: \(response!)")
-                
-                }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-                    print("Error getting home timeline")
-                    
-            })
-            
             }) { (error: NSError!) -> Void in
                 print("Failed to receive access token")
                 self.loginCompletion?(user: nil, error: error)
