@@ -17,8 +17,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
 
     
     var tweet : Tweet!{
@@ -43,9 +43,23 @@ class TweetCell: UITableViewCell {
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        super.setSelected(selected, animated: false)
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func retweet(sender: AnyObject) {
+        if (tweet.isRetweeted == false) {
+            TwitterClient.sharedInstance.retweet(String(tweet.id!))
+            retweetLabel.text = String(tweet.retweetCount + 1)
+        }
+    }
 
+
+    @IBAction func like(sender: AnyObject) {
+        if (tweet.isLiked == false) {
+            TwitterClient.sharedInstance.like(tweet.id!)
+            likeLabel.text = String(tweet.likeCount + 1)
+        }
+    }
 }
