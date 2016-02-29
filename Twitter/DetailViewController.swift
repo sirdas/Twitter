@@ -30,6 +30,9 @@ class DetailViewController: UIViewController {
         timeLabel.text = "\(date.month)/\(date.day)/\(date.year), \(date.hour):\(date.minute)"
         retweetLabel.text = String(tweet.retweetCount)
         likeLabel.text = String(tweet.likeCount)
+        
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
 
@@ -56,14 +59,16 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(rSegue: UIStoryboardSegue, sender: AnyObject?) {
+        let params: [String: String] = ["status": idLabel.text!, "in_reply_to_status_id": "@\(tweet.id)"]
+        let statusViewController = rSegue.destinationViewController as! StatusViewController
+        statusViewController.params = params
+//        statusViewController.text.text = idLabel.text! as String
     }
-    */
+
 
 }

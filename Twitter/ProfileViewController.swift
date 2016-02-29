@@ -10,11 +10,27 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var tweetsLabel: UILabel!
+    @IBOutlet weak var fingLabel: UILabel!
+    @IBOutlet weak var fersLabel: UILabel!
+    
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameLabel.text = user!.name
+        idLabel.text = "@\(user!.screenname!)"
+        tweetsLabel.text = String(user!.tweetsCount!)
+        fingLabel.text = String(user!.followingCount!)
+        fersLabel.text = String(user!.followersCount!)
+        bannerImageView.setImageWithURL(NSURL(string: user!.bannerImageUrl!)!)
+        thumbImageView.setImageWithURL(NSURL(string: user!.profileImageUrl!)!)
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
 

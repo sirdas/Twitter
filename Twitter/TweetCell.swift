@@ -26,7 +26,10 @@ class TweetCell: UITableViewCell {
             nameLabel.text = tweet.user!.name
             idLabel.text = "@\(tweet.user!.screenname!)"
             tweetLabel.text = tweet.text
-            profileButton.imageView?.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
+            profileButton.setImageForState(UIControlState.Normal , withURL: NSURL(string: tweet.user!.profileImageUrl!)!)
+            profileButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
+            profileButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill
+            //thumbImageView!.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
             let date = NSCalendar.currentCalendar().components([.Month, .Day], fromDate: tweet.createdAt!)
             timeLabel.text = "\(date.month)/\(date.day)"
             retweetLabel.text = String(tweet.retweetCount)

@@ -10,6 +10,7 @@ import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tweetButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]?
 
@@ -61,8 +62,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let tweet = tweets![indexPath!.row]
             let detailViewController = segue.destinationViewController as! DetailViewController
             detailViewController.tweet = tweet
-        } else {
-            let button = sender as! UIButton
+        } else if tweetButton.touchInside {
+//            let user = User.currentUser
+            let statusViewController = segue.destinationViewController as! StatusViewController
+//            statusViewController.user = user
+        } else if let button = sender as? UIButton {
             let view = button.superview!
             let cell = view.superview as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
