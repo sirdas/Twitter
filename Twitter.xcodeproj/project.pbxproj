@@ -19,6 +19,7 @@
 		F27BB34B1C72E258009F44CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BB34A1C72E258009F44CC /* User.swift */; };
 		F27BB34D1C72E262009F44CC /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BB34C1C72E262009F44CC /* Tweet.swift */; };
 		F2A104BE1C83D7FB00B8BD2A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A104BD1C83D7FB00B8BD2A /* DetailViewController.swift */; };
+		F2A104C01C84074600B8BD2A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A104BF1C84074600B8BD2A /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F27BB34A1C72E258009F44CC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F27BB34C1C72E262009F44CC /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		F2A104BD1C83D7FB00B8BD2A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F2A104BF1C84074600B8BD2A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				F23734E41C74015000389BF8 /* TweetsViewController.swift */,
 				F27BB3331C72CAA0009F44CC /* ViewController.swift */,
 				F2A104BD1C83D7FB00B8BD2A /* DetailViewController.swift */,
+				F2A104BF1C84074600B8BD2A /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				F23734E51C74015000389BF8 /* TweetsViewController.swift in Sources */,
 				F27BB3341C72CAA0009F44CC /* ViewController.swift in Sources */,
 				F27BB3481C72D158009F44CC /* TwitterClient.swift in Sources */,
+				F2A104C01C84074600B8BD2A /* ProfileViewController.swift in Sources */,
 				F27BB3321C72CAA0009F44CC /* AppDelegate.swift in Sources */,
 				F2A104BE1C83D7FB00B8BD2A /* DetailViewController.swift in Sources */,
 			);
