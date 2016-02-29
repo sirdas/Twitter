@@ -16,9 +16,9 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var retweetLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
-    @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
 
     
     var tweet : Tweet!{
@@ -26,7 +26,7 @@ class TweetCell: UITableViewCell {
             nameLabel.text = tweet.user!.name
             idLabel.text = "@\(tweet.user!.screenname!)"
             tweetLabel.text = tweet.text
-            thumbImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
+            profileButton.imageView?.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
             let date = NSCalendar.currentCalendar().components([.Month, .Day], fromDate: tweet.createdAt!)
             timeLabel.text = "\(date.month)/\(date.day)"
             retweetLabel.text = String(tweet.retweetCount)
@@ -38,8 +38,8 @@ class TweetCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        thumbImageView.layer.cornerRadius = 3
-        thumbImageView.clipsToBounds = true
+        profileButton.imageView!.layer.cornerRadius = 3
+        profileButton.imageView!.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

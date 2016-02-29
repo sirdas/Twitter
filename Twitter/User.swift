@@ -19,6 +19,7 @@ class User: NSObject {
     var profileImageUrl: String?
     var tagline: String?
     var dictionary: NSDictionary
+    var bannerImageUrl: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -26,6 +27,7 @@ class User: NSObject {
         screenname = dictionary["screen_name"] as? String
         profileImageUrl = dictionary["profile_image_url"] as? String
         tagline = dictionary["description"] as? String
+        bannerImageUrl = dictionary["profile_banner_url"] as? String
     }
     
     func logout() {
